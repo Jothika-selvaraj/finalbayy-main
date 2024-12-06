@@ -15,7 +15,7 @@ const Blog = () => {
 
   const fetchBlogs = async () => {
     try {
-      const endpoint = "http://localhost:3001/api/blogs";
+      const endpoint = "http://88.222.215.48:3001/api/blogs";
       const response = await fetch(endpoint);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
