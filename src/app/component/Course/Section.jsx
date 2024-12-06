@@ -14,10 +14,10 @@ const Section = () => {
           const data = await response.json();
           setSections(data);
         } else {
-          console.error('Failed to fetch courses');
+          console.error('Failed to fetch Coursrs');
         }
       } catch (error) {
-        console.error('Error fetching courses:', error);
+        console.error('Error fetching Courses:', error);
       }
     };
 
