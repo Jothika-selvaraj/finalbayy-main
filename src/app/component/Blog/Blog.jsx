@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+
 import { toast } from "react-toastify";
 
 const Blog = () => {
@@ -15,7 +15,7 @@ const Blog = () => {
 
   const fetchBlogs = async () => {
     try {
-      const endpoint = "http://88.222.215.48:3001/api/blogs";
+      const endpoint = "http://localhost:3001/api/blogs";
       const response = await fetch(endpoint);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -29,22 +29,6 @@ const Blog = () => {
     }
   };
 
-  const deleteBlog = async (id) => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:3001/api/blogs/${id}`
-      );
-      console.log("BlogList component loaded", response.data);
-      toast.success(response?.data?.msg || "Blog deleted successfully");
-      fetchBlogs(); // Refresh blog list
-    } catch (error) {
-      console.error(
-        "Error deleting blog:",
-        error.response?.data || error.message
-      );
-      toast.error("Failed to delete the blog.");
-    }
-  };
 
   useEffect(() => {
     fetchBlogs();
@@ -56,10 +40,9 @@ const Blog = () => {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 flex-1">
           {blogs.map((blog) => (
-            <Link 
+            <Link
               key={blog._id} 
-              href={`/blogdetails/${blog._id}`}
-              onClick={(e) => e.preventDefault()}
+              href={`/blog/${blog._id}`}
               className="block bg-white shadow-md rounded-lg overflow-hidden transition-all duration-300 hover:scale-[1.02] w-full"
             >
               <img
@@ -75,7 +58,8 @@ const Blog = () => {
                   By {blog.author} • {new Date(blog.createdAt).toLocaleDateString()}
                 </p>
                 <p className="text-gray-700 text-sm line-clamp-3 mb-4">{blog.content}</p>
-                <div className="flex justify-end">
+                <div className="flex justify-between">
+                 
                   <button className="bg-[#F14D5D] text-white hover:bg-[white] hover:text-black px-4 py-2 rounded-md text-sm transition-colors duration-300 w-auto">
                     Learn More <i className="bi bi-plus" />
                   </button>
@@ -109,9 +93,8 @@ const Blog = () => {
             <ul className="space-y-3">
               {getRecentBlogs().map((blog) => (
                 <li key={blog._id}>
-                  <a
-                    href={`/blogdetails/${blog._id}`}
-                    onClick={(e) => e.preventDefault()}
+                  <Link
+                    href={`/blog/${blog._id}`}
                     className="flex items-center space-x-3 hover:bg-gray-200 p-2 rounded-md transition-colors"
                   >
                     <img
@@ -127,7 +110,7 @@ const Blog = () => {
                         {new Date(blog.createdAt).toLocaleDateString()}
                       </p>
                     </div>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

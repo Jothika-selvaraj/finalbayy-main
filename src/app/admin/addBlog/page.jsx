@@ -47,7 +47,7 @@ const AddBlog = () => {
 
     try {
       // Send POST request
-      const response = await axios.post('http://88.222.215.48:3001/api/blogs', formData, {
+      const response = await axios.post('http://localhost:3001/api/blogs', formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // Make sure the request content type is 'multipart/form-data'
         },

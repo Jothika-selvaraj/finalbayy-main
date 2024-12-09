@@ -9,7 +9,7 @@ const Section = () => {
     // Fetch the courses from the API
     const fetchSections = async () => {
       try {
-        const response = await fetch('http://88.222.215.48:3001/api/courses'); // Adjust endpoint if needed
+        const response = await fetch('http://localhost:3001/api/courses'); // Adjust endpoint if needed
         if (response.ok) {
           const data = await response.json();
           setSections(data);

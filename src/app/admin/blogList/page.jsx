@@ -9,7 +9,7 @@ const BlogList = () => {
 
   const fetchBlogs = async () => {
     try {
-      const endpoint = 'http://88.222.215.48:3001/api/blogs';
+      const endpoint = 'http://localhost:3001/api/blogs';
       const response = await fetch(endpoint);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -26,7 +26,7 @@ const BlogList = () => {
 
   const deleteBlog = async (id) => {
     try {
-      const response = await axios.delete(`http://88.222.215.48:3001/api/blogs/${id}`);
+      const response = await axios.delete(`http://localhost:3001/api/blogs/${id}`);
       console.log("BlogList component loaded", response.data);
       toast.success(response?.data?.msg || 'Blog deleted successfully');
       fetchBlogs(); // Refresh blog list

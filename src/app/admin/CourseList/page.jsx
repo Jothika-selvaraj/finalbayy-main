@@ -8,7 +8,7 @@ const CourseList = () => {
   // Add delete handler function
   const handleDelete = async (courseId) => {
     try {
-      const response = await fetch(`http://88.222.215.48:3001/api/courses/${courseId}`, {
+      const response = await fetch(`http://localhost:3001/api/courses/${courseId}`, {
         method: 'DELETE',
       });
       
@@ -27,7 +27,7 @@ const CourseList = () => {
     // Add your fetch logic here
     const fetchCourses = async () => {
       try {
-        const response = await fetch('http://88.222.215.48:3001/api/courses'); // Adjust the API endpoint
+        const response = await fetch('http://localhost:3001/api/courses'); // Adjust the API endpoint
         const data = await response.json();
         setCourses(data);
       } catch (error) {
