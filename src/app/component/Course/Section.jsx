@@ -56,7 +56,7 @@ const Section = () => {
                 {section.content || 'No description available.'}
               </p>
               <div className="pt-4">
-                <button className="bg-blue-500 text-white px-8 py-3 rounded-md shadow hover:bg-blue-600 transition duration-300 w-full md:w-auto">
+                <button className="bg-[#f14d5d] text-white px-8 py-3 rounded-md shadow hover:bg-white hover:text-black transition duration-300 w-full md:w-auto">
                   Enroll Today
                 </button>
               </div>
